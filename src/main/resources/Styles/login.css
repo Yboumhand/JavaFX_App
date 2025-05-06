@@ -1,0 +1,58 @@
+/* Vbox container styles */
+
+.login_container {
+    -fx-background-color: #EEEEEE; /* light gray */
+}
+
+/* logo container styles */
+
+.login_logo_container {
+    -fx-background-color: #123A13; /* DarkGreen color */
+    -fx-alignment: center;
+}
+
+.login_logo_container Text {
+    -fx-font-size: 24;
+    -fx-fill: #FFFFFF; /* white */
+}
+
+.login_logo_container FontAwesomeIconView {
+    -fx-fill: #ECF39E;
+}
+
+/* login Form Styles */
+
+.login_form_container {
+    -fx-spacing: 15;
+    -fx-alignment: top_left;
+
+}
+
+.login_form_container Label {
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+
+}
+
+.input_field {
+    -fx-background-color: #FFFFFF;
+    -fx-pref-height: 35; /* prefered height */
+    -fx-font-size: 1.1em;
+}
+
+.login_form_container Button {
+    -fx-background-color: #123A13;
+    -fx-text-fill: #FFFFFF;
+    -fx-pref-width: 350;
+    -fx-pref-height: 30;
+    -fx-font-size: 1.2em;
+}
+
+.login_form_container Button:hover {
+    -fx-cursor: hand;
+}
+
+.error_label {
+    -fx-text-fill: #FF0000; /* red */
+}
+

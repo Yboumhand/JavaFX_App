@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/UserMenu.css"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.venteanalystfx.Controllers.User.UserMenuController">
+
+   <AnchorPane prefHeight="730.0" prefWidth="160.0" styleClass="left_container">
+      <VBox prefHeight="80.0" prefWidth="160.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <FontAwesomeIconView glyphName="HOME" size="38" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Yassine App" />
+      </VBox>
+      <VBox prefHeight="400.0" prefWidth="160.0" styleClass="menu_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <Button fx:id="data_import_button" mnemonicParsing="false" text="Import Data">
+            <graphic>
+               <FontAwesomeIconView glyphName="UPLOAD" size="20" />
+            </graphic>
+         </Button>
+         <Button fx:id="data_processing_button" mnemonicParsing="false" text="Process Data">
+            <graphic>
+               <FontAwesomeIconView glyphName="COG" size="20" />
+            </graphic>
+         </Button>
+         <Button fx:id="data_visualization_button" mnemonicParsing="false" text="Visualize Results">
+            <graphic>
+               <FontAwesomeIconView glyphName="BAR_CHART" size="20" />
+            </graphic>
+         </Button>
+         <Line endX="120.0" />
+         <Button fx:id="user_interface_button" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" text="User Interface">
+            <graphic>
+               <FontAwesomeIconView glyphName="DESKTOP" size="20" />
+            </graphic>
+         </Button>
+         <Button fx:id="export_results_button" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" text="Export Results">
+            <graphic>
+               <FontAwesomeIconView glyphName="DOWNLOAD" size="20" />
+            </graphic>
+         </Button>
+         <Button fx:id="logout_button" layoutX="10.0" layoutY="111.0" mnemonicParsing="false" styleClass="alt_menu_button" text="Logout">
+            <graphic>
+               <FontAwesomeIconView glyphName="EXTERNAL_LINK" size="20" />
+            </graphic>
+         </Button>
+      </VBox>
+      <VBox prefHeight="120.0" prefWidth="130.0" styleClass="report_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Suggestion/Bug?" />
+         <Label text="Use this to report any errors or suggestions." />
+         <Button fx:id="report_button" mnemonicParsing="false" text="Report">
+            <graphic>
+               <FontAwesomeIconView glyphName="PLUS" />
+            </graphic>
+         </Button>
+      </VBox>
+   </AnchorPane>
+</VBox>

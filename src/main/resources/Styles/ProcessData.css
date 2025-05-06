@@ -1,0 +1,17 @@
+
+.data_processing_container {
+    -fx-background: #EEEEEE;
+
+}
+
+.data_processing Text {
+    -fx-fill: #000000;
+    -fx-font-size: 2.5em;
+    -fx-font-family: "Calibri Light";
+}
+
+.data_processing_Vbox {
+    -fx-background-color: #EEEEEE;
+    -fx-padding: 10;
+}
+

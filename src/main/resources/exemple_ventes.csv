@@ -1,0 +1,16 @@
+ID_Vente,Date_Vente,Produit,Categorie,Quantite,Prix_Unitaire,Total 
+1,2024-01-10,Smartphone,Informatique,2,7500,15000
+2,2024-01-12,Souris sans fil,Informatique,5,200,1000 
+3,2024-01-15,Clavier mécanique,Informatique,3,600,1800 
+4,2024-02-05,Smartphone,Electronique,4,4500,18000 
+5,2024-02-07,Casque Bluetooth,Electronique,2,1200,2400 
+6,2024-02-10,Tablette,Electronique,1,3200,3200 
+7,2024-03-02,Imprimante,Informatique,1,2500,2500 
+8,2024-03-05,Disque dur externe,Informatique,3,900,2700 
+9,2024-03-12,Écouteurs sans fil,Electronique,4,800,3200 
+10,2024-03-20,Chargeur rapide,Electronique,6,150,900 
+11,2024-04-01,Écran 27 pouces,Informatique,2,3200,6400 
+12,2024-04-05,Clé USB 64Go,Informatique,10,150,1500 
+13,2024-04-10,Smartwatch,Electronique,3,2800,8400 
+14,2024-04-15,PC Gamer,Informatique,1,15000,15000 
+15,2024-04-20,Enceinte Bluetooth,Electronique,2,2500,5000 
