@@ -2,7 +2,7 @@ package com.example.venteanalystfx.Controllers.User;
 
 
 import com.example.venteanalystfx.Models.Model;
-import com.example.venteanalystfx.Models.Sell;
+import com.example.venteanalystfx.Models.Sale;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,10 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -26,35 +22,39 @@ public class DataImportController implements Initializable {
     public Button browseButton;
     public Button loadExampleButton;
     @FXML
-    public TableView<Sell> dataPreviewTable;
+    public TableView<Sale> dataPreviewTable;
     @FXML
-    public TableColumn<ObservableList<String>, String> col1;
+    public TableColumn<Sale, Integer> col1;
     @FXML
-    public TableColumn<ObservableList<String>, String> col2;
+    public TableColumn<Sale, LocalDate> col2;
     @FXML
-    public TableColumn<ObservableList<String>, String> col3;
+    public TableColumn<Sale, String> col3;
     @FXML
-    public TableColumn<ObservableList<String>, String> col4;
+    public TableColumn<Sale, String> col4;
     @FXML
-    public TableColumn<ObservableList<String>, String> col5;
+    public TableColumn<Sale, Integer> col5;
     @FXML
-    public TableColumn<ObservableList<String>, String> col6;
+    public TableColumn<Sale, Float> col6;
     @FXML
-    public TableColumn<ObservableList<String>, String> col7;
+    public TableColumn<Sale, Float> col7;
+
     public CheckBox saveToDbCheckbox;
     public Button data_import_button;
+    public Button refresh_button;
 
     private final Model model = Model.getInstance();
-    private ObservableList<Sell> importedDataFromCSV = FXCollections.observableArrayList();
+
+    private ObservableList<Sale> importedDataFromCSV = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadDataFromDatabase();
         configureTableColumns();
+        addRefreshButtonListener();
     }
 
     private void loadDataFromDatabase() {
-        ObservableList<Sell> sellsData = model.getAllSells();
+        ObservableList<Sale> sellsData = model.getAllSells();
         dataPreviewTable.setItems(sellsData);
     }
 
@@ -66,6 +66,19 @@ public class DataImportController implements Initializable {
         col5.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         col6.setCellValueFactory(new PropertyValueFactory<>("prixUnitaire"));
         col7.setCellValueFactory(new PropertyValueFactory<>("total"));
+    }
+
+    private void addRefreshButtonListener() {
+        refresh_button.setOnAction(event -> handleRefreshButtonClick());
+    }
+
+    private void handleRefreshButtonClick() {
+        loadDataFromDatabase(); // Appeler votre méthode pour recharger les données
+    }
+
+    @FXML
+    private void handleRefreshButtonAction() {
+        loadDataFromDatabase(); // Recall the function (reload data)
     }
 
 //    @FXML

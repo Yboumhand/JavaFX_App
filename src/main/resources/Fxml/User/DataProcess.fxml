@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" styleClass="data_processing" stylesheets="@../../Styles/ProcessData.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <Text layoutX="296.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="data_processing" text="Data Processing View" AnchorPane.leftAnchor="296.0" AnchorPane.topAnchor="14.5" />
-    <VBox fx:id="vbox" layoutX="25.0" layoutY="86.0" prefHeight="600.0" prefWidth="800.0" styleClass="data_processing_Vbox" stylesheets="@../../Styles/ProcessData.css" AnchorPane.leftAnchor="25.0">
-        <Label text="Pick it Up" />
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.venteanalystfx.Controllers.User.DataProcessController"
+            prefWidth="800" prefHeight="600">
+
+    <VBox spacing="10" padding="10">
+        <Label text="Sales Data Analysis" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <HBox spacing="10" padding="10">
+            <Label text="Sales by Category:"/>
+            <ComboBox fx:id="categoryComboBox"/>
+            <Button text="Search"/>
+        </HBox>
+
+        <Label fx:id="totalSalesLabel" text="Total Sales: " />
+
+        <Label fx:id="mostSoldLabel" text="Most Sold Product: " />
+        <Label fx:id="mostExpensiveLabel" text="Most Expensive Product: " />
+        <Label fx:id="cheapestLabel" text="Cheapest Product: " />
+
+        <BarChart fx:id="monthlySalesChart" title="Monthly Sales" prefHeight="300">
+            <xAxis>
+                <CategoryAxis label="Month"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Total Amount"/>
+            </yAxis>
+        </BarChart>
     </VBox>
 </AnchorPane>

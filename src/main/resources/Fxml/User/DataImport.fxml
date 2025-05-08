@@ -10,13 +10,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="850.0" styleClass="background-pane" stylesheets="@../../Styles/DataImport.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.venteanalystfx.Controllers.User.DataImportController">
    <VBox layoutY="2.0" prefHeight="700.0" prefWidth="850.0" spacing="15.0" styleClass="main-container" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
       <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
       </padding>
-      <Label styleClass="header-label" text="Import Sales Data" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="822.0" styleClass="header-label" text="Import Sales Data">
+         <font>
+            <Font name="Georgia" size="24.0" />
+         </font></Label>
       <VBox spacing="8.0" styleClass="input-container">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -31,13 +35,13 @@
       <Label styleClass="section-label" text="Data preview" />
       <TableView fx:id="dataPreviewTable" prefHeight="300.0" prefWidth="200.0" styleClass="data-table" VBox.vgrow="ALWAYS">
          <columns>
-            <TableColumn fx:id="col1" prefWidth="75.0" text="ID_Vente" />
-            <TableColumn fx:id="col2" prefWidth="100.0" text="Date_Vente" />
-            <TableColumn fx:id="col3" prefWidth="120.0" text="Produit" />
-            <TableColumn fx:id="col4" prefWidth="100.0" text="Categorie" />
-            <TableColumn fx:id="col5" prefWidth="80.0" text="Quantite" />
-            <TableColumn fx:id="col6" prefWidth="100.0" text="Prix_Unitaire" />
-            <TableColumn fx:id="col7" prefWidth="100.0" text="Total" />
+            <TableColumn fx:id="col1" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="col2" prefWidth="108.0" text="Date" />
+            <TableColumn fx:id="col3" prefWidth="149.0" text="Product" />
+            <TableColumn fx:id="col4" prefWidth="104.0" text="Category" />
+            <TableColumn fx:id="col5" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="col6" prefWidth="108.0" text="Unit Price" />
+            <TableColumn fx:id="col7" prefWidth="142.0" text="Total" />
          </columns>
       </TableView>
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="15.0" styleClass="action-container">
@@ -46,6 +50,11 @@
          </padding>
          <CheckBox fx:id="saveToDbCheckbox" mnemonicParsing="false" styleClass="custom-checkbox" text="Save to database" />
          <Button fx:id="data_import_button" mnemonicParsing="false" styleClass="primary-button" text="Import" />
+         <Button fx:id="refresh_button" alignment="CENTER" mnemonicParsing="false" text="Refresh">
+            <HBox.margin>
+               <Insets left="530.0" />
+            </HBox.margin>
+         </Button>
       </HBox>
    </VBox>
 </AnchorPane>

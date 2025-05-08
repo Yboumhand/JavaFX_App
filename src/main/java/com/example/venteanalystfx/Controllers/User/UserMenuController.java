@@ -5,7 +5,6 @@ import com.example.venteanalystfx.Views.UserMenuOptions;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,6 +18,7 @@ public class UserMenuController implements Initializable {
     public Button user_interface_button;
     public Button export_results_button;
     public Button logout_button;
+    public Button report_button;
 
 
     @Override

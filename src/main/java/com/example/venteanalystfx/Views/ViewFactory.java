@@ -71,7 +71,7 @@ public class ViewFactory {
     public AnchorPane getUserInterfaceView() {
         if (userInterfaceView == null) {
             try {
-                userInterfaceView = new FXMLLoader(getClass().getResource("/Fxml/User/User.fxml")).load();
+                userInterfaceView = new FXMLLoader(getClass().getResource("/Fxml/User/UserInterface.fxml")).load();
             } catch (IOException e) {
                 e.printStackTrace();
             }
