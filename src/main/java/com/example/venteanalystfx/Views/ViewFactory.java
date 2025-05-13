@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -18,8 +20,8 @@ public class ViewFactory {
 
     // Views
     private AnchorPane importDataView;
-    private AnchorPane processDataView;
-    private AnchorPane visualizeResultsView;
+    private BorderPane processDataView;
+    private VBox visualizeResultsView;
     private AnchorPane userInterfaceView;
     private AnchorPane exportResultsView;
     private AnchorPane logoutView;
@@ -45,7 +47,7 @@ public class ViewFactory {
     }
 
     // Process Data View
-    public AnchorPane getProcessDataView() {
+    public BorderPane getProcessDataView() {
         if (processDataView == null) { // not loaded yet
             try {
                 processDataView = new FXMLLoader(getClass().getResource("/Fxml/User/DataProcess.fxml")).load();
@@ -57,7 +59,7 @@ public class ViewFactory {
     }
 
     // Visualize Results View
-    public AnchorPane getVisualizeResultsView() {
+    public VBox getVisualizeResultsView() {
         if (visualizeResultsView == null) {
             try {
                 visualizeResultsView = new FXMLLoader(getClass().getResource("/Fxml/User/VisualizeResults.fxml")).load();

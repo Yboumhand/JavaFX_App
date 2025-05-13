@@ -3,6 +3,9 @@ package com.example.venteanalystfx.Models;
 import com.example.venteanalystfx.Views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -16,7 +19,6 @@ public class Model {
     // User Data Section
     private final User user;
     private boolean userLoginSuccessFlag; // evaluation of the login credentials (success or failure)
-
     // Salles Data Section
     private final ObservableList<Sale> sells;
 
@@ -83,6 +85,29 @@ public class Model {
         loadAllSells(); // Recharger les données depuis la base de données
         return sells;
     }
+
+    public ObservableList<PieChart.Data> getCategorySalesData() {
+        ObservableList<PieChart.Data> categorySalesData = FXCollections.observableArrayList();
+
+        // Get category sales data from the database
+        ResultSet resultSet = this.databaseDriver.getTotalSalesByCategory();
+
+        try {
+            while (resultSet.next()) {
+                String category = resultSet.getString("categorie");
+                float totalSales = resultSet.getFloat("total_par_categorie");
+
+                // Add data to the observable list
+                categorySalesData.add(new PieChart.Data(category, totalSales));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categorySalesData;
+    }
+
+
 
     private void loadAllSells() {
         ResultSet resultSet = databaseDriver.getAllSalesData();

@@ -15,6 +15,8 @@
         private final FloatProperty prixUnitaire;
         private final FloatProperty total;
 
+
+
         public Sale(int idVente, LocalDate date, String product, String category, int quantity, float unitPrice, float totalAmount) {
             this.idVente = new SimpleIntegerProperty(this, "idVente", idVente);
             this.dateVente = new SimpleObjectProperty<>(this, "date_vente", date);

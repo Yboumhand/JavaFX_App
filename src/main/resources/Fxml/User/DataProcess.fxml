@@ -1,38 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.venteanalystfx.Controllers.User.DataProcessController"
-            prefWidth="800" prefHeight="600">
-
-    <VBox spacing="10" padding="10">
-        <Label text="Sales Data Analysis" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
-
-        <HBox spacing="10" padding="10">
-            <Label text="Sales by Category:"/>
-            <ComboBox fx:id="categoryComboBox"/>
-            <Button text="Search"/>
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.venteanalystfx.Controllers.User.DataProcessController">
+    <top>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER">
+            <Label text="Sales Data Analysis" textAlignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+            </Label>
         </HBox>
-
-        <Label fx:id="totalSalesLabel" text="Total Sales: " />
-
-        <Label fx:id="mostSoldLabel" text="Most Sold Product: " />
-        <Label fx:id="mostExpensiveLabel" text="Most Expensive Product: " />
-        <Label fx:id="cheapestLabel" text="Cheapest Product: " />
-
-        <BarChart fx:id="monthlySalesChart" title="Monthly Sales" prefHeight="300">
-            <xAxis>
-                <CategoryAxis label="Month"/>
-            </xAxis>
-            <yAxis>
-                <NumberAxis label="Total Amount"/>
-            </yAxis>
-        </BarChart>
-    </VBox>
-</AnchorPane>
+    </top>
+    <center>
+        <TabPane prefHeight="550.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <Tab text="Sales Summary">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <VBox layoutX="14.0" layoutY="14.0" prefHeight="470.0" prefWidth="772.0" spacing="15.0">
+                        <HBox prefHeight="200.0" prefWidth="772.0" spacing="20.0">
+                            <VBox prefHeight="200.0" prefWidth="376.0" style="-fx-background-color: #f8f8f8; -fx-padding: 10; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
+                                <Label text="Sales by Category" underline="true">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="TAGS" />
+                           </graphic>
+                                </Label>
+                                <TableView fx:id="categorySalesTable" prefHeight="172.0" prefWidth="356.0">
+                                    <columns>
+                                        <TableColumn fx:id="categoryColumn" prefWidth="188.0" text="Category" />
+                                        <TableColumn fx:id="totalSalesColumn" prefWidth="166.0" text="Total Sales" />
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                            <VBox prefHeight="200.0" prefWidth="376.0" style="-fx-background-color: #f8f8f8; -fx-padding: 10; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
+                                <Label text="Top Selling Products" underline="true">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="STAR" />
+                           </graphic>
+                                </Label>
+                                <TableView fx:id="topProductsTable" prefHeight="172.0" prefWidth="356.0">
+                                    <columns>
+                                        <TableColumn fx:id="productNameColumn" prefWidth="188.0" text="Product" />
+                                        <TableColumn fx:id="quantitySoldColumn" prefWidth="166.0" text="Quantity Sold" />
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                        </HBox>
+                        <HBox prefHeight="200.0" prefWidth="772.0" spacing="20.0">
+                            <VBox prefHeight="200.0" prefWidth="376.0" style="-fx-background-color: #f8f8f8; -fx-padding: 10; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
+                                <Label text="Product Prices" underline="true">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="MONEY" />
+                           </graphic>
+                                </Label>
+                                <TableView fx:id="productPricesTable" prefHeight="172.0" prefWidth="356.0">
+                                    <columns>
+                                        <TableColumn fx:id="priceProductColumn" prefWidth="188.0" text="Product" />
+                                        <TableColumn fx:id="priceValueColumn" prefWidth="166.0" text="Unit Price" />
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                            <VBox prefHeight="200.0" prefWidth="376.0" style="-fx-background-color: #f8f8f8; -fx-padding: 10; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
+                                <Label text="Statistics" underline="true">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="LINE_CHART" />
+                           </graphic>
+                                </Label>
+                                <ScrollPane prefHeight="172.0" prefWidth="356.0">
+                                    <VBox fx:id="statsContainer" prefHeight="170.0" prefWidth="354.0" spacing="5.0">
+                                        <Label fx:id="totalSalesLabel" text="Total Sales: 0.00 DH" />
+                                        <Label fx:id="avgSalesLabel" text="Average Sale: 0.00 DH" />
+                                        <Label fx:id="mostExpensiveLabel" text="Most Expensive Product: -" />
+                                        <Label fx:id="leastExpensiveLabel" text="Least Expensive Product: -" />
+                                        <Label fx:id="bestSellingCategoryLabel" text="Best-Selling Category: -" />
+                                        <Label fx:id="bestSellingMonthLabel" text="Month with Highest Sales: -" />
+                                    </VBox>
+                                </ScrollPane>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Charts">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <VBox layoutX="14.0" layoutY="14.0" prefHeight="470.0" prefWidth="772.0" spacing="15.0">
+                        <HBox prefHeight="246.0" prefWidth="772.0" spacing="20.0">
+                            <BarChart fx:id="monthlySalesChart" legendSide="RIGHT" prefHeight="235.0" prefWidth="772.0" title="Monthly Sales">
+                                <xAxis>
+                                    <CategoryAxis fx:id="monthAxis" label="Month" prefHeight="53.0" prefWidth="665.0" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="salesAxis" label="Sales (DH)" prefHeight="160.0" prefWidth="77.0" side="LEFT" />
+                                </yAxis>
+                            </BarChart>
+                        </HBox>
+                        <HBox prefHeight="208.0" prefWidth="772.0" spacing="20.0">
+                            <PieChart fx:id="categorySalesPieChart" legendSide="RIGHT" prefHeight="235.0" prefWidth="376.0" title="Sales by Category" />
+                            <PieChart fx:id="productQuantityPieChart" legendSide="RIGHT" prefHeight="235.0" prefWidth="376.0" title="Top 5 Products by Quantity" />
+                        </HBox>
+                    </VBox>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Raw Data">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <TableView fx:id="allSalesTable" layoutX="14.0" layoutY="14.0" prefHeight="477.0" prefWidth="772.0">
+                        <columns>
+                            <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+                            <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date" />
+                            <TableColumn fx:id="rawProductColumn" prefWidth="150.0" text="Product" />
+                            <TableColumn fx:id="rawCategoryColumn" prefWidth="150.0" text="Category" />
+                            <TableColumn fx:id="quantityColumn" prefWidth="80.0" text="Quantity" />
+                            <TableColumn fx:id="unitPriceColumn" prefWidth="120.0" text="Unit Price" />
+                            <TableColumn fx:id="totalColumn" prefWidth="120.0" text="Total" />
+                        </columns>
+                    </TableView>
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

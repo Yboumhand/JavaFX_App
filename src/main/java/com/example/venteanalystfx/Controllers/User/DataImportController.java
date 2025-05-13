@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class DataImportController implements Initializable {
 
-    public TextField csvPathField;
+    private TextField csvPathField;
     public Button browseButton;
     public Button loadExampleButton;
     @FXML
@@ -41,6 +41,7 @@ public class DataImportController implements Initializable {
     public CheckBox saveToDbCheckbox;
     public Button data_import_button;
     public Button refresh_button;
+    public Label dbStatusLabel1;
 
     private final Model model = Model.getInstance();
 
@@ -56,6 +57,11 @@ public class DataImportController implements Initializable {
     private void loadDataFromDatabase() {
         ObservableList<Sale> sellsData = model.getAllSells();
         dataPreviewTable.setItems(sellsData);
+        if (sellsData.isEmpty()) {
+            dbStatusLabel1.setText("No content in the table");
+        } else {
+            dbStatusLabel1.setText(sellsData.size() + " record(s) found");
+        }
     }
 
     private void configureTableColumns() {
@@ -69,68 +75,16 @@ public class DataImportController implements Initializable {
     }
 
     private void addRefreshButtonListener() {
-        refresh_button.setOnAction(event -> handleRefreshButtonClick());
+        refresh_button.setOnAction(event -> handleRefreshButtonAction());
     }
 
-    private void handleRefreshButtonClick() {
-        loadDataFromDatabase(); // Appeler votre méthode pour recharger les données
-    }
+//    private void handleRefreshButtonClick() {
+//        loadDataFromDatabase(); // Appeler votre méthode pour recharger les données
+//    }
 
     @FXML
     private void handleRefreshButtonAction() {
         loadDataFromDatabase(); // Recall the function (reload data)
     }
-
-//    @FXML
-//    private void handleLoadExampleButtonAction() {
-//        importedDataFromCSV.clear(); // Effacer les données précédemment chargées du CSV
-//
-//        try (InputStream inputStream = getClass().getResourceAsStream("/exemple_ventes.csv")) {
-//            assert inputStream != null;
-//            try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-//
-//                String line;
-//                boolean isFirstLine = true; // to ignore the first row (columnsName)
-//
-//                while ((line = reader.readLine()) != null) {
-//                    if (isFirstLine) {
-//                        isFirstLine = false;
-//                        continue; //ignore the first row
-//                    }
-//
-//                    String[] fields = line.split(","); // for columns seperator
-//
-//                    if (fields.length == 7) {
-//                        try {
-//                            int idVente = Integer.parseInt(fields[0].trim());
-//                            LocalDate dateVente = LocalDate.parse(fields[1].trim());
-//                            String produit = fields[2].trim();
-//                            String categorie = fields[3].trim();
-//                            int quantite = Integer.parseInt(fields[4].trim());
-//                            float prixUnitaire = Float.parseFloat(fields[5].trim());
-//                            float total = Float.parseFloat(fields[6].trim());
-//
-//                            importedDataFromCSV.add(new Sell(idVente, dateVente, produit, categorie, quantite, prixUnitaire, total));
-//                        } catch (NumberFormatException e) {
-//                            System.err.println("Erreur de format dans la ligne CSV : " + line + " - " + e.getMessage());
-//                            // handle the message error
-//                        }
-//                    } else {
-//                        System.err.println("Ligne CSV invalide (nombre de colonnes incorrect) : " + line);
-//                        // handle the error
-//                    }
-//                }
-//
-//                dataPreviewTable.setItems(importedDataFromCSV); // display csv_data within the TableView
-//
-//            }
-//        } catch (IOException e) {
-//            System.err.println("Erreur lors de la lecture du fichier d'exemple : " + e.getMessage());
-//            // Gérer l'erreur (afficher un message à l'utilisateur)
-//        }
-//    }
-
-
-
 
 }

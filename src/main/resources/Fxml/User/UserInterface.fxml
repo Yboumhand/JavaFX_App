@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -70,8 +70,14 @@
                             <padding>
                                 <Insets top="10.0" />
                             </padding>
-                            <Button fx:id="clearSaleButton" mnemonicParsing="false" styleClass="secondary-button" text="Clear" />
-                            <Button fx:id="saveSaleButton" defaultButton="true" mnemonicParsing="false" styleClass="primary-button" text="Save" />
+                            <Button fx:id="clearSaleButton" mnemonicParsing="false" styleClass="secondary-button" text="Clear">
+                        <graphic>
+                           <FontAwesomeIconView glyphName="TRASH" />
+                        </graphic></Button>
+                            <Button fx:id="saveSaleButton" defaultButton="true" mnemonicParsing="false" styleClass="primary-button" text="Save">
+                        <graphic>
+                           <FontAwesomeIconView glyphName="SAVE" />
+                        </graphic></Button>
                         </HBox>
                         <Label fx:id="saleStatusLabel" styleClass="status-label" />
                     </VBox>
@@ -93,11 +99,17 @@
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                             <Label text="CSV File:" />
                             <TextField fx:id="csvFilePathField" editable="false" prefHeight="30.0" prefWidth="400.0" promptText="Select a CSV file" HBox.hgrow="ALWAYS" />
-                            <Button fx:id="browseButton" mnemonicParsing="false" styleClass="secondary-button" text="Browse" />
-                            <Button fx:id="loadExampleButton" mnemonicParsing="false" text="Load Example" />
+                            <Button fx:id="browseButton" mnemonicParsing="false" styleClass="secondary-button" text="Browse">
+                        <graphic>
+                           <FontAwesomeIconView glyphName="FOLDER_OPEN" />
+                        </graphic></Button>
+                            <Button fx:id="loadExampleButton" mnemonicParsing="false" text="Load Example">
+                        <graphic>
+                           <FontAwesomeIconView glyphName="SPINNER" />
+                        </graphic></Button>
                         </HBox>
                         <Label text="Data Preview:" />
-                        <TableView fx:id="csvPreviewTable" prefHeight="300.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="csvPreviewTable" prefHeight="258.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
                             <columns>
                                 <!-- Columns will be added dynamically -->
                             </columns>
@@ -106,11 +118,23 @@
                             <padding>
                                 <Insets top="10.0" />
                             </padding>
-                            <CheckBox fx:id="saveToDbCheckbox" mnemonicParsing="false" selected="true" text="Save to database" />
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" spacing="15.0">
-                            <Button fx:id="refreshCsvButton" mnemonicParsing="false" text="Refresh" />
-                            <Button fx:id="importCsvButton" defaultButton="true" mnemonicParsing="false" styleClass="primary-button" text="Import" />
+                     <children>
+                               <Button fx:id="refreshCsvButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Refresh">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="REFRESH" />
+                           </graphic>
+                        </Button>
+                               <Button fx:id="importCsvButton" defaultButton="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" styleClass="primary-button" text="Import">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="UPLOAD" />
+                           </graphic>
+                        </Button>
+                     </children>
                         </HBox>
                         <Label fx:id="csvStatusLabel" styleClass="status-label" />
                     </VBox>
@@ -136,7 +160,10 @@
                             <DatePicker fx:id="endDatePicker" promptText="End date" />
                             <Label text="Category:" />
                             <ComboBox fx:id="dbCategoryFilter" prefWidth="150.0" promptText="All" />
-                            <Button fx:id="loadDbButton" defaultButton="true" mnemonicParsing="false" text="Load" />
+                            <Button fx:id="loadDbButton" defaultButton="true" mnemonicParsing="false" text="Load">
+                        <graphic>
+                           <FontAwesomeIconView glyphName="SPINNER" />
+                        </graphic></Button>
                         </HBox>
                         <TableView fx:id="dbDataTable" prefHeight="300.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
                             <columns>
@@ -153,7 +180,10 @@
                             <Label text="Total Sales:" />
                             <Label fx:id="totalSalesLabel" styleClass="total-label" text="0.00 DH" />
                             <Pane HBox.hgrow="ALWAYS" />
-                            <Button fx:id="exportDataButton" mnemonicParsing="false" text="Export Data" />
+                            <Button fx:id="exportDataButton" mnemonicParsing="false" text="Export Data">
+                        <graphic>
+                           <FontAwesomeIconView glyphName="EXTERNAL_LINK" />
+                        </graphic></Button>
                         </HBox>
                         <Label fx:id="dbStatusLabel" styleClass="status-label" />
                     </VBox>

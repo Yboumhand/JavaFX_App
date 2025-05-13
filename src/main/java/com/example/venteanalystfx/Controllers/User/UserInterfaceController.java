@@ -18,6 +18,17 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.time.LocalDateTime;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+
 public class UserInterfaceController implements Initializable {
 
     // Tab 1: New Sale Form
@@ -253,11 +264,197 @@ public class UserInterfaceController implements Initializable {
             e.printStackTrace();
         }
     }
+    // exportData button to pdf/ csv file implementation
 
     private void exportData() {
-        dbStatusLabel.setText("Export functionality not yet implemented");
-        // Implémentez ici la logique d'exportation des données
+        // First check if there's data to export
+        if (dbDataTable.getItems() == null || dbDataTable.getItems().isEmpty()) {
+            dbStatusLabel.setText("No data to export");
+            return;
+        }
+
+        // Create dialog to choose export format
+        Alert formatDialog = new Alert(Alert.AlertType.CONFIRMATION);
+        formatDialog.setTitle("Export Format");
+        formatDialog.setHeaderText("Choose Export Format");
+        formatDialog.setContentText("Select the format for exporting data:");
+
+        ButtonType pdfButton = new ButtonType("PDF");
+        ButtonType csvButton = new ButtonType("CSV");
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        formatDialog.getButtonTypes().setAll(pdfButton, csvButton, cancelButton);
+
+        // Show the dialog and get the result
+        ButtonType result = formatDialog.showAndWait().orElse(cancelButton);
+
+        if (result == cancelButton) {
+            return; // User canceled the operation
+        }
+
+        // Set up file chooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Export File");
+
+        // Set default file name with date
+        String dateStr = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        String defaultFileName = "sales_export_" + dateStr;
+
+        // Set extension based on chosen format
+        if (result == pdfButton) {
+            fileChooser.getExtensionFilters().add(
+                    new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            fileChooser.setInitialFileName(defaultFileName + ".pdf");
+        } else {
+            fileChooser.getExtensionFilters().add(
+                    new FileChooser.ExtensionFilter("CSV Files", "*.csv"));
+            fileChooser.setInitialFileName(defaultFileName + ".csv");
+        }
+
+        // Show save dialog
+        File file = fileChooser.showSaveDialog(mainTabPane.getScene().getWindow());
+
+        if (file != null) {
+            try {
+                if (result == pdfButton) {
+                    exportToPdf(file);
+                } else {
+                    exportToCsv(file);
+                }
+                dbStatusLabel.setText("Data exported successfully to: " + file.getAbsolutePath());
+            } catch (Exception e) {
+                dbStatusLabel.setText("Error exporting data: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
+
+    /**
+     * Exports the data from the table to a CSV file
+     */
+    private void exportToCsv(File file) throws IOException {
+        ObservableList<Sale> data = dbDataTable.getItems();
+        try (FileWriter fw = new FileWriter(file)) {
+            // Write header
+            fw.write("ID,Date,Product,Category,Quantity,Unit Price,Total\n");
+
+            // Write data rows
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            for (Sale sale : data) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(sale.idVenteProperty().get()).append(",");
+                sb.append(sale.dateVenteProperty().get().format(dateFormatter)).append(",");
+                sb.append(escapeSpecialCharacters(sale.produitProperty().get())).append(",");
+                sb.append(escapeSpecialCharacters(sale.categorieProperty().get())).append(",");
+                sb.append(sale.quantiteProperty().get()).append(",");
+                sb.append(sale.prixUnitaireProperty().get()).append(",");
+                sb.append(sale.totalProperty().get()).append("\n");
+                fw.write(sb.toString());
+            }
+        }
+    }
+
+    /**
+     * Helper method to escape special characters in CSV
+     */
+    private String escapeSpecialCharacters(String data) {
+        if (data == null) {
+            return "";
+        }
+        String escapedData = data.replaceAll("\"", "\"\"");
+        // Wrap in quotes if the data contains special characters
+        if (escapedData.contains(",") || escapedData.contains("\"") ||
+                escapedData.contains("\n") || escapedData.contains("\r")) {
+            escapedData = "\"" + escapedData + "\"";
+        }
+        return escapedData;
+    }
+
+    /**
+     * Exports the data from the table to a PDF file
+     */
+    private void exportToPdf(File file) throws IOException {
+        try {
+            // Create Document object
+            Document document = new Document();
+            // Create PdfWriter instance
+            PdfWriter.getInstance(document, new FileOutputStream(file));
+            // Open the document
+            document.open();
+
+            // Add title
+            Font titleFont = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
+            Paragraph title = new Paragraph("Sales Report", titleFont);
+            title.setAlignment(Element.ALIGN_CENTER);
+            document.add(title);
+            document.add(new Paragraph(" ")); // Add space
+
+            // Add date range information
+            Font infoFont = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
+            String dateRange = "Period: " + startDatePicker.getValue() + " to " + endDatePicker.getValue();
+            String categoryInfo = "Category: " + dbCategoryFilter.getValue();
+            Paragraph dateInfo = new Paragraph(dateRange + " | " + categoryInfo, infoFont);
+            dateInfo.setAlignment(Element.ALIGN_CENTER);
+            document.add(dateInfo);
+            document.add(new Paragraph(" ")); // Add space
+
+            // Create table
+            PdfPTable pdfTable = new PdfPTable(7); // 7 columns
+            pdfTable.setWidthPercentage(100);
+
+            // Set column widths
+            pdfTable.setWidths(new float[]{0.5f, 1.2f, 2f, 1.5f, 1f, 1.2f, 1.2f});
+
+            // Add table headers
+            String[] headers = {"ID", "Date", "Product", "Category", "Quantity", "Unit Price", "Total"};
+            Font headerFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+
+            for (String header : headers) {
+                PdfPCell cell = new PdfPCell(new Phrase(header, headerFont));
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                pdfTable.addCell(cell);
+            }
+
+            // Add table data
+            ObservableList<Sale> data = dbDataTable.getItems();
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            for (Sale sale : data) {
+                pdfTable.addCell(String.valueOf(sale.idVenteProperty().get()));
+                pdfTable.addCell(sale.dateVenteProperty().get().format(dateFormatter));
+                pdfTable.addCell(sale.produitProperty().get());
+                pdfTable.addCell(sale.categorieProperty().get());
+                pdfTable.addCell(String.valueOf(sale.quantiteProperty().get()));
+                pdfTable.addCell(String.valueOf(sale.prixUnitaireProperty().get()));
+                pdfTable.addCell(String.valueOf(sale.totalProperty().get()));
+            }
+
+            // Add table to document
+            document.add(pdfTable);
+
+            // Add total
+            document.add(new Paragraph(" ")); // Add space
+            Font totalFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+            Paragraph totalParagraph = new Paragraph("Total Sales: " + totalSalesLabel.getText(), totalFont);
+            totalParagraph.setAlignment(Element.ALIGN_RIGHT);
+            document.add(totalParagraph);
+
+            // Add footer with current date and time
+            document.add(new Paragraph(" ")); // Add space
+            Font footerFont = new Font(Font.FontFamily.HELVETICA, 8, Font.ITALIC);
+            Paragraph footer = new Paragraph("Generated on: " +
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), footerFont);
+            footer.setAlignment(Element.ALIGN_CENTER);
+            document.add(footer);
+
+            // Close document
+            document.close();
+        } catch (DocumentException e) {
+            throw new IOException("Error creating PDF: " + e.getMessage(), e);
+        }
+    }
+
+    // Forms implementation
 
     private void clearSaleForm() {
         productField.clear();
@@ -284,10 +481,12 @@ public class UserInterfaceController implements Initializable {
             try {
                 quantity = Integer.parseInt(quantityField.getText());
                 if (quantity <= 0) {
+                    quantityField.clear();
                     saleStatusLabel.setText("The quantity must be greater than 0");
                     return;
                 }
             } catch (NumberFormatException e) {
+                quantityField.clear();
                 saleStatusLabel.setText("Please enter a valid quantity");
                 return;
             }
@@ -296,10 +495,12 @@ public class UserInterfaceController implements Initializable {
             try {
                 unitPrice = Float.parseFloat(priceField.getText());
                 if (unitPrice <= 0) {
+                    priceField.clear();
                     saleStatusLabel.setText("The unit price must be greater than 0");
                     return;
                 }
             } catch (NumberFormatException e) {
+                priceField.clear();
                 saleStatusLabel.setText("Please enter a valid unit price");
                 return;
             }
@@ -316,8 +517,8 @@ public class UserInterfaceController implements Initializable {
             boolean success = Model.getInstance().addNewSale(product, category, quantity, unitPrice, saleDate);
 
             if (success) {
-                saleStatusLabel.setText("Sale saved successfully");
                 clearSaleForm();
+                saleStatusLabel.setText("Sale saved successfully");
             } else {
                 saleStatusLabel.setText("Error while saving the sale");
             }
@@ -327,4 +528,6 @@ public class UserInterfaceController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 }
