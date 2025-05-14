@@ -63,6 +63,20 @@ public class Model {
         return user;
     }
 
+    public ObservableList<String> getAllCategories() {
+        ObservableList<String> categories = FXCollections.observableArrayList();
+        categories.add("All Categories");
+        try {
+            ResultSet rs = databaseDriver.getAllCategories();
+            while (rs.next()) {
+                categories.add(rs.getString("category"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categories;
+    }
+
     public void evaluateUserCredentials(String username, String password) {
         ResultSet resultSet = databaseDriver.getUserData(username, password);
         try {

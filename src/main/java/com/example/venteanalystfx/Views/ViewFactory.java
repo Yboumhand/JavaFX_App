@@ -8,9 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+
 import javafx.stage.Stage;
 import java.io.IOException;
+
 
 
 public class ViewFactory {
@@ -21,7 +22,7 @@ public class ViewFactory {
     // Views
     private AnchorPane importDataView;
     private BorderPane processDataView;
-    private VBox visualizeResultsView;
+    private AnchorPane visualizeResultsView;
     private AnchorPane userInterfaceView;
     private AnchorPane exportResultsView;
     private AnchorPane logoutView;
@@ -58,8 +59,7 @@ public class ViewFactory {
         return processDataView;
     }
 
-    // Visualize Results View
-    public VBox getVisualizeResultsView() {
+    public AnchorPane getVisualizeResultsView() {
         if (visualizeResultsView == null) {
             try {
                 visualizeResultsView = new FXMLLoader(getClass().getResource("/Fxml/User/VisualizeResults.fxml")).load();
@@ -132,7 +132,7 @@ public class ViewFactory {
         stage.setScene(scene); // add the scene to stage
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Images/icon.png"))));
         stage.setResizable(false);
-        stage.setTitle("Yassine App");
+        stage.setTitle("VenteFx App");
         stage.show();
     }
 

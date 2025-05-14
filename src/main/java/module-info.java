@@ -5,6 +5,8 @@ module com.example.venteanalystfx {
     requires de.jensd.fx.glyphs.fontawesome;
     requires org.xerial.sqlitejdbc;
     requires itextpdf;
+    requires org.jfree.jfreechart;
+    requires java.desktop;
 
     opens com.example.venteanalystfx to javafx.fxml;
     exports com.example.venteanalystfx;

@@ -3,7 +3,6 @@ package com.example.venteanalystfx.Controllers.User;
 
 import com.example.venteanalystfx.Models.Model;
 import com.example.venteanalystfx.Models.Sale;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,9 +17,6 @@ import java.util.ResourceBundle;
 
 public class DataImportController implements Initializable {
 
-    private TextField csvPathField;
-    public Button browseButton;
-    public Button loadExampleButton;
     @FXML
     public TableView<Sale> dataPreviewTable;
     @FXML
@@ -38,14 +34,12 @@ public class DataImportController implements Initializable {
     @FXML
     public TableColumn<Sale, Float> col7;
 
-    public CheckBox saveToDbCheckbox;
     public Button data_import_button;
     public Button refresh_button;
     public Label dbStatusLabel1;
 
     private final Model model = Model.getInstance();
 
-    private ObservableList<Sale> importedDataFromCSV = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,13 +72,7 @@ public class DataImportController implements Initializable {
         refresh_button.setOnAction(event -> handleRefreshButtonAction());
     }
 
-//    private void handleRefreshButtonClick() {
-//        loadDataFromDatabase(); // Appeler votre méthode pour recharger les données
-//    }
-
-    @FXML
     private void handleRefreshButtonAction() {
-        loadDataFromDatabase(); // Recall the function (reload data)
+        loadDataFromDatabase();
     }
-
 }

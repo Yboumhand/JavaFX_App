@@ -17,7 +17,6 @@
             }
         }
 
-
         public ResultSet getUserData(String username, String password) {
             Statement statement;
             ResultSet resultSet = null;
@@ -42,6 +41,11 @@
                 e.printStackTrace();
             }
             return resultSet;
+        }
+
+        public ResultSet getAllCategories() throws SQLException {
+            Statement statement = this.conn.createStatement();
+            return statement.executeQuery("SELECT DISTINCT categorie as category FROM ventes");
         }
 
         public boolean insertSale(String product, String category, int quantity, float unitPrice, LocalDate saleDate) {

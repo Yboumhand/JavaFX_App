@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="login_container" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.venteanalystfx.Controllers.LoginController">
    <VBox layoutX="2.0" prefHeight="400.0" prefWidth="200.0" styleClass="login_logo_container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
       <FontAwesomeIconView glyphName="HOME" size="40" text="" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Yassine App" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VenteFx App" />
    </VBox>
    <VBox layoutX="221.0" layoutY="20.0" prefHeight="350.0" prefWidth="350.0" styleClass="login_form_container" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="221.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="20.0">
       <Label fx:id="username_label" text="Username">
