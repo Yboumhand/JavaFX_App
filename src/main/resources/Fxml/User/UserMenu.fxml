@@ -16,7 +16,7 @@
          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VenteFx App" />
       </VBox>
       <VBox prefHeight="400.0" prefWidth="160.0" styleClass="menu_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-         <Button fx:id="data_import_button" mnemonicParsing="false" text="Import Data">
+         <Button fx:id="data_import_button" mnemonicParsing="false" text="Data preview">
             <graphic>
                <FontAwesomeIconView glyphName="UPLOAD" size="20" />
             </graphic>
@@ -26,20 +26,10 @@
                <FontAwesomeIconView glyphName="COG" size="20" />
             </graphic>
          </Button>
-         <Button fx:id="data_visualization_button" mnemonicParsing="false" text="Visualize Results">
-            <graphic>
-               <FontAwesomeIconView glyphName="BAR_CHART" size="20" />
-            </graphic>
-         </Button>
          <Line endX="120.0" />
          <Button fx:id="user_interface_button" layoutX="10.0" layoutY="60.0" mnemonicParsing="false" text="User Interface">
             <graphic>
                <FontAwesomeIconView glyphName="DESKTOP" size="20" />
-            </graphic>
-         </Button>
-         <Button fx:id="export_results_button" layoutX="10.0" layoutY="85.0" mnemonicParsing="false" text="Export Results">
-            <graphic>
-               <FontAwesomeIconView glyphName="DOWNLOAD" size="20" />
             </graphic>
          </Button>
          <Button fx:id="logout_button" layoutX="10.0" layoutY="111.0" mnemonicParsing="false" styleClass="alt_menu_button" text="Logout">

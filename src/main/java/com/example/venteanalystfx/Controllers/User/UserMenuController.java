@@ -14,9 +14,9 @@ import java.util.ResourceBundle;
 public class UserMenuController implements Initializable {
     public Button data_import_button;
     public Button data_processing_button;
-    public Button data_visualization_button;
+    // public Button data_visualization_button;
     public Button user_interface_button;
-    public Button export_results_button;
+    // public Button export_results_button;
     public Button logout_button;
     public Button report_button;
 
@@ -29,9 +29,9 @@ public class UserMenuController implements Initializable {
     private void addListeners() {
         data_import_button.setOnAction(event -> onImportData());
         data_processing_button.setOnAction(event -> onProcessData());
-        data_visualization_button.setOnAction(event -> onVisualizeResults());
+        // data_visualization_button.setOnAction(event -> onVisualizeResults());
         user_interface_button.setOnAction(event -> onUserInterface());
-        export_results_button.setOnAction(event -> onExportResults());
+        // export_results_button.setOnAction(event -> onExportResults());
         logout_button.setOnAction(event -> onLogout());
 
 
@@ -46,17 +46,17 @@ public class UserMenuController implements Initializable {
         Model.getInstance().getViewFactory().getUserSelectedMenuItem().set(UserMenuOptions.DATA_PROCESS);
     }
 
-    private void onVisualizeResults() {
+   /* private void onVisualizeResults() {
         Model.getInstance().getViewFactory().getUserSelectedMenuItem().set(UserMenuOptions.VISUALIZE_RESULTS);
-    }
+    }*/
 
     private void onUserInterface() {
         Model.getInstance().getViewFactory().getUserSelectedMenuItem().set(UserMenuOptions.USER_INTERFACE);
     }
 
-    private void onExportResults() {
+    /*private void onExportResults() {
         Model.getInstance().getViewFactory().getUserSelectedMenuItem().set(UserMenuOptions.EXPORT_RESULTS);
-    }
+    }*/
 
     private void onLogout() {
         Model.getInstance().setUserLoginSuccessFlag(false);

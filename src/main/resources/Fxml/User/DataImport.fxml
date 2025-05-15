@@ -12,55 +12,105 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="850.0" styleClass="background-pane" stylesheets="@../../Styles/DataImport.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.venteanalystfx.Controllers.User.DataImportController">
+
    <VBox layoutY="2.0" prefHeight="700.0" prefWidth="850.0" spacing="15.0" styleClass="main-container" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+
       <padding>
+
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+
       </padding>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="822.0" styleClass="header-label" text="Import Sales Data">
+
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="822.0" styleClass="header-label" text="Sales Data">
+
          <font>
+
             <Font name="Georgia" size="24.0" />
+
          </font></Label>
+
       <VBox spacing="8.0" styleClass="input-container">
+
          <padding>
+
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+
          </padding>
+
          <HBox alignment="CENTER_LEFT" spacing="10.0" />
+
       </VBox>
+
       <Label styleClass="section-label" text="Data preview">
+
          <font>
+
             <Font size="16.0" />
+
          </font>
+
          <graphic>
+
             <FontAwesomeIconView glyphName="TABLE" />
+
          </graphic></Label>
+
       <TableView fx:id="dataPreviewTable" prefHeight="300.0" prefWidth="200.0" styleClass="data-table" VBox.vgrow="ALWAYS">
+
          <columns>
+
             <TableColumn fx:id="col1" prefWidth="61.0" text="ID" />
+
             <TableColumn fx:id="col2" prefWidth="135.0" text="Date" />
+
             <TableColumn fx:id="col3" prefWidth="128.0" text="Product" />
+
             <TableColumn fx:id="col4" prefWidth="137.0" text="Category" />
+
             <TableColumn fx:id="col5" prefWidth="71.0" text="Quantity" />
+
             <TableColumn fx:id="col6" prefWidth="119.0" text="Unit Price" />
+
             <TableColumn fx:id="col7" prefWidth="147.0" text="Total" />
+
          </columns>
+
       </TableView>
+
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" spacing="15.0" styleClass="action-container">
+
          <padding>
+
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+
          </padding>
-         <Button fx:id="data_import_button" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" styleClass="primary-button" text="Import">
-            <graphic>
-               <FontAwesomeIconView glyphName="UPLOAD" />
-            </graphic></Button>
-         <Button fx:id="refresh_button" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Refresh">
+
+         <Button fx:id="refresh_button" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="208.0" text="Refresh">
+
             <HBox.margin>
-               <Insets left="600.0" />
+
+               <Insets left="700.0" />
+
             </HBox.margin>
+
             <graphic>
-               <FontAwesomeIconView glyphName="REFRESH" />
+
+               <FontAwesomeIconView glyphName="REFRESH" text="" />
+
             </graphic>
+
+            <opaqueInsets>
+
+               <Insets />
+
+            </opaqueInsets>
+
          </Button>
+
       </HBox>
+
    </VBox>
+
    <Label fx:id="dbStatusLabel1" layoutX="426.0" layoutY="-8.0" prefHeight="20.0" prefWidth="0.0" styleClass="status-label" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="426.0" AnchorPane.rightAnchor="424.0" AnchorPane.topAnchor="650.0" />
+
 </AnchorPane>

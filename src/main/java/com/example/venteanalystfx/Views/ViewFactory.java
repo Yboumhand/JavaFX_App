@@ -22,9 +22,9 @@ public class ViewFactory {
     // Views
     private AnchorPane importDataView;
     private BorderPane processDataView;
-    private AnchorPane visualizeResultsView;
+    // private AnchorPane visualizeResultsView;
     private AnchorPane userInterfaceView;
-    private AnchorPane exportResultsView;
+    // private AnchorPane exportResultsView;
     private AnchorPane logoutView;
 
     public ViewFactory() {
@@ -59,7 +59,7 @@ public class ViewFactory {
         return processDataView;
     }
 
-    public AnchorPane getVisualizeResultsView() {
+   /* public AnchorPane getVisualizeResultsView() {
         if (visualizeResultsView == null) {
             try {
                 visualizeResultsView = new FXMLLoader(getClass().getResource("/Fxml/User/VisualizeResults.fxml")).load();
@@ -69,7 +69,7 @@ public class ViewFactory {
         }
         return visualizeResultsView;
     }
-
+    */
     public AnchorPane getUserInterfaceView() {
         if (userInterfaceView == null) {
             try {
@@ -81,6 +81,7 @@ public class ViewFactory {
         return userInterfaceView;
     }
 
+    /*
     // Export Results View
     public AnchorPane getExportResultsView() {
         if (exportResultsView == null) {
@@ -92,6 +93,7 @@ public class ViewFactory {
         }
         return exportResultsView;
     }
+    */
 
     // Logout View
     public AnchorPane getLogoutView() {

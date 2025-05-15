@@ -20,6 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.CheckBox?>
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.venteanalystfx.Controllers.User.UserInterfaceController">
     <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <padding>
@@ -119,22 +120,28 @@
                                 <Insets top="10.0" />
                             </padding>
                         </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="20.0">
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                            <CheckBox fx:id="saveToDbCheckbox" mnemonicParsing="false" text="Save to database" /> <!-- Ajout du CheckBox ici -->
+                        </HBox>
                         <HBox alignment="CENTER_RIGHT" spacing="15.0">
-                     <children>
-                               <Button fx:id="refreshCsvButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Refresh">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="REFRESH" />
-                           </graphic>
-                        </Button>
-                               <Button fx:id="importCsvButton" defaultButton="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" styleClass="primary-button" text="Import">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="UPLOAD" />
-                           </graphic>
-                        </Button>
-                     </children>
+                            <Button fx:id="refreshCsvButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0"
+                                    text="Refresh">
+                                <HBox.margin>
+                                    <Insets/>
+                                </HBox.margin>
+                                <graphic>
+                                    <FontAwesomeIconView glyphName="REFRESH"/>
+                                </graphic>
+                            </Button>
+                            <Button fx:id="importCsvButton" defaultButton="true" mnemonicParsing="false"
+                                    prefHeight="25.0" prefWidth="80.0" styleClass="primary-button" text="Import">
+                                <graphic>
+                                    <FontAwesomeIconView glyphName="UPLOAD"/>
+                                </graphic>
+                            </Button>
                         </HBox>
                         <Label fx:id="csvStatusLabel" styleClass="status-label" />
                     </VBox>

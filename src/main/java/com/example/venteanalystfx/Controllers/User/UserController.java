@@ -15,9 +15,9 @@ public class UserController implements Initializable {
         Model.getInstance().getViewFactory().getUserSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
             switch (newVal) {
                 case DATA_PROCESS -> user_parent.setCenter(Model.getInstance().getViewFactory().getProcessDataView());
-                case VISUALIZE_RESULTS -> user_parent.setCenter(Model.getInstance().getViewFactory().getVisualizeResultsView());
+                // case VISUALIZE_RESULTS -> user_parent.setCenter(Model.getInstance().getViewFactory().getVisualizeResultsView());
                 case USER_INTERFACE -> user_parent.setCenter(Model.getInstance().getViewFactory().getUserInterfaceView());
-                case EXPORT_RESULTS -> user_parent.setCenter(Model.getInstance().getViewFactory().getExportResultsView());
+                // case EXPORT_RESULTS -> user_parent.setCenter(Model.getInstance().getViewFactory().getExportResultsView());
                 default -> user_parent.setCenter(Model.getInstance().getViewFactory().getImportDataView());
             }
         });
