@@ -12,7 +12,6 @@ This Java application enables analysis and visualization of sales data from eith
 - Product pricing information
 - Key statistics and performance metrics
 
-
 ### Data Import
 - CSV file loading capability
 - Direct integration with MySQL database
@@ -61,11 +60,79 @@ The application processes sales data with the following structure:
 (Add instructions for installation and usage here)
 
 ## Screenshots
+- Login Page
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/Login.png)
+- Data Preview
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/DataPreview.png)
+- Sales Summary
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/SalesSummary.png)
+- Charts
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/Charts.png)
+- Database Records
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/DataBaseRecords.png)
+- Add Sales Form
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/AddSales.png)
+- Import CSV File To Database
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/ImportCsvFileToDataBase.png)
+- Advanced Database Record(s) Preview with Filters such as Period and Category
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/AdvancedDataBaseRecordPreview_Filters.png)
+- Export Data to PDF/CSV
+![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/ExportDataToPdfCsv.png)
 
+## Future Development Potential
 
+This application has significant potential for further development and enhancement. Some possible improvements and additional functionalities include:
 
-## Contributors
-(Add your name and any other contributors)
+### Advanced Analytics
+- Predictive sales forecasting using machine learning algorithms
+- Customer segmentation and purchasing pattern analysis
+- Product affinity analysis (commonly purchased together)
+- Seasonal trend identification and correlation with external factors
+
+### Enhanced Visualization
+- Interactive dashboards with drill-down capabilities
+- Real-time data monitoring and visualization
+- Custom report builder with drag-and-drop interface
+- Geospatial visualization for regional sales analysis
+
+### System Integration
+- ERP/CRM system integration
+- E-commerce platform connectivity
+- Cloud storage integration (AWS S3, Google Cloud Storage)
+- API endpoints for third-party application access
+
+### Mobile Compatibility
+- Responsive design for mobile devices
+- Native mobile application for iOS and Android
+- Push notifications for important sales metrics
+- Offline mode with data synchronization
+
+### Advanced User Management
+- Role-based access control
+- Multi-factor authentication
+- User activity logging and audit trails
+- Customizable user dashboards
+
+### Performance Optimization
+- Database query optimization
+- Caching mechanisms for frequently accessed data
+- Batch processing for large datasets
+- Multi-threading for improved performance
+
+### Data Security Enhancements
+- End-to-end encryption
+- Compliance with data protection regulations (GDPR, CCPA)
+- Data anonymization options
+- Regular security audits and vulnerability testing
+
+### Additional Export Options
+- Export to multiple formats (Excel, JSON, XML)
+- Automated report scheduling and distribution
+- Integration with business intelligence tools
+- Custom report templates
+
+## Contributing
+Contributions to enhance this application are welcome. Please feel free to fork the repository, make improvements, and submit pull requests.
 
 ## License
-(Add license information)
+(c) No Copyright
