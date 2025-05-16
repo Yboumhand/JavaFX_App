@@ -60,23 +60,41 @@ The application processes sales data with the following structure:
 (Add instructions for installation and usage here)
 
 ## Screenshots
-- Login Page
+
+## Login Page
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/Login.png)
-- Data Preview
+
+## Data Preview
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/DataPreview.png)
-- Sales Summary
+
+ ## Sales Summary
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/SalesSummary.png)
-- Charts
+
+## Charts
+  
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/Charts.png)
-- Database Records
+
+## Database Records
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/DataBaseRecords.png)
-- Add Sales Form
+
+## Add Sales Form
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/AddSales.png)
-- Import CSV File To Database
+
+## Import CSV File To Database
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/ImportCsvFileToDataBase.png)
-- Advanced Database Record(s) Preview with Filters such as Period and Category
+
+## Advanced Database Record(s) Preview with Filters such as Period and Category
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/AdvancedDataBaseRecordPreview_Filters.png)
-- Export Data to PDF/CSV
+
+## Export Data to PDF/CSV
+
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/ExportDataToPdfCsv.png)
 
 ## Future Development Potential
