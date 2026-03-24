@@ -57,9 +57,6 @@ The application processes sales data with the following structure:
 - Unit Price
 - Total Amount
 
-## 🚀 Installation & Usage
-(Add instructions for installation and usage here)
-
 ## 📸 Screenshots
 ### Login Page 🔐
 ![image](https://github.com/Yboumhand/JavaFX_App/blob/46aec159d615423cdb2609aacd9369d792790b70/Login.png)
